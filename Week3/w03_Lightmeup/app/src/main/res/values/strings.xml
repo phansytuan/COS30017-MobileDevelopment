@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Icon Toggle App</string>
+    <string name="icon_late">Late Icon</string>
+    <string name="icon_done">Done Icon</string>
+    <string name="tap_count">Taps: %1$d</string>
+    <string name="icon_desc">Toggleable Icon</string>
+</resources>
