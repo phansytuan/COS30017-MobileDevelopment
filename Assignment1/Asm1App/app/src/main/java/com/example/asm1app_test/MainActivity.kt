@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
         private const val KEY_HAS_FALLEN = "hasFallen"
     }
 
-    // Game state variables
+    // game state variables
     private var score = 0
-    private var holdCount = 0 // Tracks the current hold number (1-9)
+    private var holdCount = 0 // tracks the current hold number (1-9)
     private var hasFallen = false
 
-    // UI components
+    // ui components
     private lateinit var scoreTextView: TextView
     private lateinit var climbButton: Button
     private lateinit var fallButton: Button
@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate: Activity created")
         setContentView(R.layout.activity_main)
 
-        // Initialize UI components
+        // initialize UI components
         scoreTextView = findViewById(R.id.scoreTextView)
         climbButton = findViewById(R.id.climbButton)
         fallButton = findViewById(R.id.fallButton)
         resetButton = findViewById(R.id.resetButton)
 
-        // Restore saved state if available
+        // restore saved state if available
         savedInstanceState?.let {
             score = it.getInt(KEY_SCORE, 0)
             holdCount = it.getInt(KEY_HOLD_COUNT, 0)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
         updateScoreDisplay()
 
-        // Climb button logic
+        // climb button logic
         climbButton.setOnClickListener {
             if (hasFallen) {
                 Log.d(TAG, "Climb clicked: Climber has fallen. No further climbing allowed.")
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             updateScoreDisplay()
         }
 
-        // Fall button logic
+        // fall button logic
         fallButton.setOnClickListener {
             if (holdCount < 1) {
                 Log.d(TAG, "Fall clicked: Cannot fall before reaching hold 1.")
@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Fall clicked: Climber has already fallen.")
                 return@setOnClickListener
             }
-            // Subtract 3 points ensuring score does not go below 0
+            // subtract 3 points & ensuring score does not go below 0
             score = (score - 3).coerceAtLeast(0)
             hasFallen = true
             Log.d(TAG, "Fall clicked: Climber falls, new score=$score")
             updateScoreDisplay()
         }
 
-        // Reset button logic
+        // reset button logic
         resetButton.setOnClickListener {
             score = 0
             holdCount = 0
@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//  returns the points associated with a given hold number.
     private fun getPointsForHold(hold: Int): Int {
         return when (hold) {
             in 1..3 -> 1  // Blue zone
@@ -114,7 +115,8 @@ class MainActivity : AppCompatActivity() {
         }
         scoreTextView.setTextColor(ContextCompat.getColor(this, colorResId))
     }
-    
+
+//  save game state so that it can be restored on configuration changes such as screen rotation.
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(KEY_SCORE, score)
         outState.putInt(KEY_HOLD_COUNT, holdCount)
