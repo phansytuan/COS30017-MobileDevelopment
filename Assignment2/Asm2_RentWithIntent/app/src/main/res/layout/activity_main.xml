@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+    <!-- AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#77DD77"
+        app:title="RentEasy"
+        app:titleTextColor="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Item Image -->
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/placeholder" />
+
+        <!-- Item Name -->
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Interactive Star Rating -->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:layout_marginTop="8dp" />
+
+        <!-- Attributes -->
+        <TextView
+            android:id="@+id/itemAttributes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attributes: "
+            android:layout_marginTop="8dp"
+            android:textColor="#000000" />
+
+        <!-- Rental Accessories (clickable) -->
+        <TextView
+            android:id="@+id/itemAccessories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accessories: "
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="#000000" />
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: 0 credits/month"
+            android:layout_marginTop="8dp"
+            android:textColor="#000000" />
+
+        <!-- Remaining Rental Time (clickable) -->
+        <TextView
+            android:id="@+id/itemRemainingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining Rental Time: N/A"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Navigation Buttons -->
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/borrowButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Borrow"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     // game state variables
     private var score = 0
-    private var holdCount = 0 // tracks the current hold number (1-9)
+    private var holdCount = 0  // tracks the current hold number (1-9)
     private var hasFallen = false
 
     // ui components
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         fallButton.setOnClickListener {
             if (holdCount < 1) {
                 Log.d(TAG, "Fall clicked: Cannot fall before reaching hold 1.")
-                return@setOnClickListener
+                return@setOnClickListener  // chi dung su kien click, tranh loi thoat nham khoi onCreate()
             }
             if (holdCount >= 9) {
                 Log.d(TAG, "Fall clicked: At top hold, falling is disabled.")
